@@ -914,15 +914,180 @@
             .metric-number { font-size: 1.3rem; }
             .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
         }
+
+        /* ── Typewriter cursor ── */
+        .typewriter-role {
+            color: var(--cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+        .tw-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--cyan);
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blinkCursor 0.75s step-end infinite;
+        }
+        @keyframes blinkCursor {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ── Floating terminal widget ── */
+        .hero-terminal {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 560px;
+            background: rgba(8, 10, 20, 0.85);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            animation: floatTerminal 5s ease-in-out infinite alternate;
+            text-align: left;
+        }
+        @keyframes floatTerminal {
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-10px); }
+        }
+        .terminal-titlebar {
+            background: rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .t-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .t-red   { background: #ff5f57; }
+        .t-yel   { background: #ffbd2e; }
+        .t-grn   { background: #28c840; }
+        .terminal-title-text {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.3);
+            margin-left: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .terminal-body {
+            padding: 18px 20px;
+            line-height: 1.9;
+            color: #94a3b8;
+        }
+        .t-prompt { color: #6366f1; }
+        .t-cmd    { color: #e2e8f0; }
+        .t-string { color: #10b981; }
+        .t-key    { color: #00f2fe; }
+        .t-num    { color: #f59e0b; }
+        .t-comment{ color: rgba(148,163,184,0.4); }
+        .t-line   { display: flex; gap: 10px; opacity: 0; }
+        .t-line.show { animation: fadeLineIn 0.3s ease forwards; }
+        @keyframes fadeLineIn {
+            from { opacity: 0; transform: translateX(-6px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ── Particle canvas ── */
+        #particle-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* ── Count-up metric number ── */
+        .metric-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 4px;
+            transition: color 0.3s;
+        }
+        @media (max-width: 640px) { .metric-number { font-size: 1.6rem; } }
+        @media (max-width: 380px)  { .metric-number { font-size: 1.3rem; } }
+
+        @media (max-width: 640px) {
+            .hero-terminal { font-size: 0.72rem; }
+            .terminal-body { padding: 12px 14px; line-height: 1.7; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
 
     <!-- Background Glow Mesh -->
     <div class="bg-grid"></div>
     <div class="glow-mesh mesh-1"></div>
     <div class="glow-mesh mesh-2"></div>
     <div class="glow-mesh mesh-3"></div>
+
+    <script>
+    (function(){
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        const COUNT = window.innerWidth < 640 ? 28 : 55;
+        const MAX_DIST = 120;
+        const particles = [];
+
+        function resize() {
+            W = canvas.width  = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        for(let i = 0; i < COUNT; i++) {
+            particles.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                vx: (Math.random() - 0.5) * 0.35,
+                vy: (Math.random() - 0.5) * 0.35,
+                r: Math.random() * 1.4 + 0.5
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            for(let i = 0; i < particles.length; i++) {
+                for(let j = i+1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < MAX_DIST) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(99,102,241,${0.18 * (1 - dist/MAX_DIST)})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(99,102,241,0.45)';
+                ctx.fill();
+                p.x += p.vx; p.y += p.vy;
+                if(p.x < 0 || p.x > W) p.vx *= -1;
+                if(p.y < 0 || p.y > H) p.vy *= -1;
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+    </script>
 
     <!-- Navigation Header -->
     <nav>
@@ -945,12 +1110,15 @@
 
         <!-- Hero Section -->
         <section class="hero" id="about">
+            <!-- Typewriter pill -->
             <div class="hero-pill">
-                <i class="fa-solid fa-sparkles"></i> FULLSTACK SOFTWARE & WEB ENGINEER
+                <i class="fa-solid fa-terminal"></i>
+                <span class="typewriter-role" id="tw-role"></span><span class="tw-cursor"></span>
             </div>
+
             <h1>Arip Khasanul Muna<br><span class="gradient-text">Membangun Web Berkinerja Tinggi</span></h1>
             <p class="hero-subtitle">
-                Spesialis pengembang web berarsitektur bersih (clean code) dan teruji. Berfokus pada sistem Laravel skala penuh, integrasi API, pengujian otomatis, serta antarmuka modern yang cepat dan aman.
+                Spesialis pengembang web berarsitektur bersih dan teruji. Fokus pada sistem Laravel skala penuh, integrasi API, dan antarmuka modern yang cepat.
             </p>
             <div class="hero-actions">
                 <a href="#projects" class="btn-glow">
@@ -960,27 +1128,107 @@
                     <i class="fa-brands fa-whatsapp"></i> Hubungi WhatsApp
                 </a>
             </div>
+
+            <!-- Floating Terminal Widget -->
+            <div class="hero-terminal">
+                <div class="terminal-titlebar">
+                    <span class="t-dot t-red"></span>
+                    <span class="t-dot t-yel"></span>
+                    <span class="t-dot t-grn"></span>
+                    <span class="terminal-title-text">arip@tiketfest ~ bash</span>
+                </div>
+                <div class="terminal-body" id="terminal-lines">
+                    <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">php artisan test <span class="t-comment">--filter=TiketFest</span></span></div>
+                    <div class="t-line"><span class="t-string">  PASS</span> <span class="t-cmd">Tests\Feature\TicketPurchaseTest</span></div>
+                    <div class="t-line"><span class="t-string">  PASS</span> <span class="t-cmd">Tests\Feature\PaymentGatewayTest</span></div>
+                    <div class="t-line"><span class="t-string">  PASS</span> <span class="t-cmd">Tests\Feature\QRScannerTest</span></div>
+                    <div class="t-line"><span class="t-key">Tests:</span> <span class="t-num">68</span> <span class="t-cmd">passed</span> <span class="t-comment">(134 assertions)</span></div>
+                    <div class="t-line"><span class="t-key">Duration:</span> <span class="t-num">1.23s</span></div>
+                    <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">_</span><span class="tw-cursor" style="background:var(--primary)"></span></div>
+                </div>
+            </div>
         </section>
 
-        <!-- Key Metrics Bar -->
-        <div class="metrics-bar">
+        <!-- Key Metrics Bar — angka pakai count-up animation -->
+        <div class="metrics-bar" id="metrics-bar">
             <div class="metric-item">
-                <div class="metric-number">100%</div>
-                <div class="metric-label">PHPUnit Test Coverage</div>
+                <div class="metric-number" data-target="100" data-suffix="%">0%</div>
+                <div class="metric-label">PHPUnit Coverage</div>
             </div>
             <div class="metric-item">
-                <div class="metric-number">68+</div>
-                <div class="metric-label">Automated Tests Passed</div>
+                <div class="metric-number" data-target="68" data-suffix="+">0+</div>
+                <div class="metric-label">Automated Tests</div>
             </div>
             <div class="metric-item">
-                <div class="metric-number">Laravel 13</div>
-                <div class="metric-label">Framework & Engine</div>
+                <div class="metric-number" data-target="4" data-suffix=" Role">0 Role</div>
+                <div class="metric-label">Multi-Role System</div>
             </div>
             <div class="metric-item">
-                <div class="metric-number">Clean</div>
-                <div class="metric-label">Enterprise Architecture</div>
+                <div class="metric-number" data-target="100" data-suffix="%">0%</div>
+                <div class="metric-label">Clean Architecture</div>
             </div>
         </div>
+
+        <script>
+            // Typewriter Effect
+            const roles = ["FULLSTACK SOFTWARE ENGINEER", "LARAVEL EXPERT", "WEB PERFORMANCE SPECIALIST"];
+            let roleIdx = 0;
+            const roleEl = document.getElementById('tw-role');
+
+            function typeRole() {
+                let charIdx = 0;
+                let currentRole = roles[roleIdx];
+                roleEl.innerText = "";
+                let interval = setInterval(() => {
+                    roleEl.innerText += currentRole[charIdx];
+                    charIdx++;
+                    if(charIdx === currentRole.length) {
+                        clearInterval(interval);
+                        setTimeout(deleteRole, 2000);
+                    }
+                }, 100);
+            }
+
+            function deleteRole() {
+                let currentRole = roles[roleIdx];
+                let interval = setInterval(() => {
+                    roleEl.innerText = roleEl.innerText.slice(0, -1);
+                    if(roleEl.innerText === "") {
+                        clearInterval(interval);
+                        roleIdx = (roleIdx + 1) % roles.length;
+                        typeRole();
+                    }
+                }, 50);
+            }
+            typeRole();
+
+            // Terminal Animation
+            const lines = document.querySelectorAll('.t-line');
+            lines.forEach((line, i) => {
+                setTimeout(() => line.classList.add('show'), i * 300);
+            });
+
+            // Count-up Metrics
+            const observer = new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting) {
+                    document.querySelectorAll('.metric-number').forEach(el => {
+                        let target = parseInt(el.getAttribute('data-target'));
+                        let suffix = el.getAttribute('data-suffix');
+                        let count = 0;
+                        let interval = setInterval(() => {
+                            count += Math.ceil(target / 50);
+                            if(count >= target) {
+                                count = target;
+                                clearInterval(interval);
+                            }
+                            el.innerText = count + suffix;
+                        }, 30);
+                    });
+                    observer.disconnect();
+                }
+            }, { threshold: 0.5 });
+            observer.observe(document.getElementById('metrics-bar'));
+        </script>
 
         <!-- Featured Project Section with Carousel Slider -->
         <section class="showcase-container" id="projects">
