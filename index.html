@@ -430,18 +430,55 @@
 
         .project-banner-box {
             background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
-            padding: 40px;
+            padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            min-height: 280px;
+            min-height: 300px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        /* Screenshot preview in banner */
+        .project-banner-box .banner-screenshot {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-showcase-card:hover .banner-screenshot {
+            transform: scale(1.04);
+        }
+
+        /* Overlay gradient on top of screenshot */
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(5, 7, 15, 0.25) 0%,
+                rgba(5, 7, 15, 0.0) 40%,
+                rgba(5, 7, 15, 0.55) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* Badge positioned over the screenshot */
+        .banner-badge-wrap {
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            z-index: 2;
         }
 
         .featured-badge {
             align-self: flex-start;
-            background: rgba(99, 102, 241, 0.25);
+            background: rgba(99, 102, 241, 0.35);
             border: 1px solid var(--primary-light);
             color: #fff;
             padding: 6px 16px;
@@ -450,6 +487,27 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        /* "Click to preview" hint label at bottom of banner */
+        .banner-preview-hint {
+            position: absolute;
+            bottom: 14px;
+            right: 20px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: rgba(255,255,255,0.55);
+            background: rgba(0,0,0,0.35);
+            padding: 5px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .banner-icon-bg {
@@ -807,8 +865,20 @@
                     <!-- Project Card 1: Event Ticket Platform -->
                     <div class="project-showcase-card">
                         <div class="project-banner-box">
-                            <span class="featured-badge"><i class="fa-solid fa-crown"></i> Fullstack Web Platform</span>
-                            <i class="fa-solid fa-ticket banner-icon-bg"></i>
+                            <!-- App Screenshot Preview -->
+                            <img
+                                src="assets/tiketfest_preview.jpg"
+                                alt="TiketFest App Preview"
+                                class="banner-screenshot"
+                            />
+                            <!-- Overlay & Badges -->
+                            <div class="banner-overlay"></div>
+                            <div class="banner-badge-wrap">
+                                <span class="featured-badge"><i class="fa-solid fa-crown"></i> Fullstack Web Platform</span>
+                            </div>
+                            <div class="banner-preview-hint">
+                                <i class="fa-solid fa-expand"></i> App Preview
+                            </div>
                         </div>
 
                         <div class="project-body">
