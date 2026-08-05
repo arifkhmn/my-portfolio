@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arip Khasanul Muna — Fullstack Software Engineer & System Architect</title>
+    <title>Arip Khasanul Muna — Fullstack Engineer & System Architect</title>
     
     <!-- Google Fonts: Outfit & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,8 +18,8 @@
             --bg-dark: #030712;
             --bg-surface: rgba(10, 15, 26, 0.85);
             --bg-card: rgba(15, 23, 42, 0.7);
-            --border-light: rgba(255, 255, 255, 0.12);
-            --border-hover: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --border-glow: rgba(255, 255, 255, 0.25);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent-white: #ffffff;
@@ -39,21 +39,21 @@
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
-            selection-background-color: rgba(255, 255, 255, 0.2);
+            selection-background-color: rgba(255, 255, 255, 0.25);
             selection-color: #fff;
         }
 
         .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Grid Background & Ambient Mesh */
+        /* Grid Pattern Background */
         .bg-grid {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 48px 48px;
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 56px 56px;
             pointer-events: none;
             z-index: -2;
         }
@@ -61,47 +61,47 @@
         .glow-mesh {
             position: fixed;
             border-radius: 50%;
-            filter: blur(140px);
+            filter: blur(160px);
             z-index: -1;
-            opacity: 0.25;
+            opacity: 0.2;
             pointer-events: none;
-            animation: floatGlow 20s ease-in-out infinite alternate;
+            animation: floatGlow 22s ease-in-out infinite alternate;
         }
         .mesh-1 {
-            top: -150px; left: -150px;
-            width: 650px; height: 650px;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            top: -180px; left: -180px;
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 70%);
         }
         .mesh-2 {
-            bottom: -150px; right: -150px;
-            width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            bottom: -180px; right: -180px;
+            width: 750px; height: 750px;
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%);
         }
 
         @keyframes floatGlow {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, 30px) scale(1.08); }
+            100% { transform: translate(50px, 35px) scale(1.1); }
         }
 
         /* Mouse Spotlight Overlay */
         .mouse-spotlight {
             position: fixed;
             top: 0; left: 0;
-            width: 600px; height: 600px;
-            margin-top: -300px; margin-left: -300px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+            width: 650px; height: 650px;
+            margin-top: -325px; margin-left: -325px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 1;
-            transition: transform 0.12s ease-out;
+            transition: transform 0.1s ease-out;
         }
 
-        /* Glass Floating Navigation */
+        /* Glass Navbar */
         nav {
             position: fixed;
             top: 20px; left: 50%;
             transform: translateX(-50%);
-            width: 92%; max-width: 1080px;
+            width: 92%; max-width: 1140px;
             background: rgba(10, 15, 26, 0.85);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
@@ -112,7 +112,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 40px rgba(0, 0, 0, 0.7);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 40px rgba(0, 0, 0, 0.8);
         }
 
         .brand-logo {
@@ -149,6 +149,39 @@
             color: #fff;
         }
 
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .cmd-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .cmd-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .cmd-btn kbd {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2px 6px;
+            border-radius: 6px;
+            color: #fff;
+            font-weight: 700;
+        }
+
         .hire-badge {
             background: rgba(16, 185, 129, 0.12);
             border: 1px solid rgba(16, 185, 129, 0.35);
@@ -178,19 +211,23 @@
 
         /* Container */
         .container {
-            max-width: 1080px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
         /* Hero Section */
         .hero {
-            padding-top: 180px;
-            padding-bottom: 80px;
-            display: flex;
-            flex-direction: column;
+            padding-top: 170px;
+            padding-bottom: 70px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
             align-items: center;
-            text-align: center;
+        }
+
+        .hero-left {
+            text-align: left;
         }
 
         .hero-pill {
@@ -199,7 +236,7 @@
             gap: 8px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 8px 22px;
+            padding: 8px 20px;
             border-radius: 50px;
             font-size: 0.8rem;
             color: var(--text-main);
@@ -210,10 +247,10 @@
 
         .hero h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 4.2rem;
+            font-size: 3.8rem;
             font-weight: 900;
             line-height: 1.05;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             letter-spacing: -2px;
         }
 
@@ -224,10 +261,10 @@
         }
 
         .hero-subtitle {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 740px;
-            margin-bottom: 38px;
+            max-width: 600px;
+            margin-bottom: 34px;
             font-weight: 300;
             line-height: 1.7;
         }
@@ -235,7 +272,6 @@
         .hero-actions {
             display: flex;
             gap: 16px;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
@@ -248,8 +284,8 @@
             background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
             color: #030712;
             font-weight: 800;
-            font-size: 0.95rem;
-            padding: 16px 36px;
+            font-size: 0.92rem;
+            padding: 15px 32px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.9);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 8px 24px -4px rgba(255, 255, 255, 0.3);
@@ -281,8 +317,8 @@
             background: rgba(255, 255, 255, 0.05);
             color: #f8fafc;
             font-weight: 700;
-            font-size: 0.95rem;
-            padding: 16px 36px;
+            font-size: 0.92rem;
+            padding: 15px 32px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(12px);
@@ -298,25 +334,23 @@
             transform: translateY(-2px);
         }
 
-        /* Floating Terminal Widget */
+        /* Hero Right Terminal Widget */
         .hero-terminal {
-            margin-top: 48px;
             width: 100%;
-            max-width: 600px;
             background: rgba(10, 15, 26, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
             backdrop-filter: blur(24px);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.82rem;
-            animation: floatTerminal 5s ease-in-out infinite alternate;
             text-align: left;
+            transition: transform 0.3s ease;
         }
-        @keyframes floatTerminal {
-            0%   { transform: translateY(0px); }
-            100% { transform: translateY(-10px); }
+        .hero-terminal:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.25);
         }
         .terminal-titlebar {
             background: rgba(255, 255, 255, 0.04);
@@ -337,7 +371,7 @@
         }
         .terminal-body {
             padding: 20px 22px;
-            line-height: 1.9;
+            line-height: 1.85;
             color: #94a3b8;
         }
         .t-prompt { color: #ffffff; font-weight: bold; }
@@ -375,12 +409,12 @@
             50% { opacity: 0; }
         }
 
-        /* Key Metrics Bar */
+        /* Metrics Bar */
         .metrics-bar {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin: 60px 0 110px 0;
+            margin: 40px 0 100px 0;
             background: rgba(10, 15, 26, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 28px;
@@ -410,8 +444,8 @@
 
         /* Section Title Header */
         .section-header {
-            margin-bottom: 50px;
-            text-align: center;
+            margin-bottom: 48px;
+            text-align: left;
         }
 
         .section-tag {
@@ -429,99 +463,57 @@
             font-size: 2.8rem;
             font-weight: 900;
             letter-spacing: -1px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        /* Featured Project Showcase Container */
-        .showcase-container {
+        /* ============================================
+           BENTO GRID SHOWCASE (Linear / Raycast Style)
+           ============================================ */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
             margin-bottom: 120px;
         }
 
-        .section-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .slider-nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background: rgba(10, 15, 26, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 8px 20px;
-            border-radius: 40px;
-            backdrop-filter: blur(20px);
-        }
-
-        .slider-arrow {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .slider-arrow:hover {
-            background: #ffffff;
-            color: #030712;
-            transform: scale(1.06);
-        }
-
-        .slider-counter {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 1px;
-        }
-
-        /* Slider Wrapper */
-        .projects-slider-wrapper {
-            overflow: hidden;
-            border-radius: 32px;
-        }
-
-        .projects-slider-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            width: 100%;
-        }
-
-        /* Project Showcase Card */
-        .project-showcase-card {
-            min-width: 100%;
-            flex: 0 0 100%;
+        .bento-card {
             background: rgba(10, 15, 26, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 32px;
-            overflow: hidden;
+            padding: 36px;
             backdrop-filter: blur(24px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-banner-box {
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-6px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 30px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Giant Hero Bento Card (Spans 2 cols) */
+        .bento-hero {
+            grid-column: span 2;
+        }
+
+        .bento-hero-media {
             position: relative;
             width: 100%;
-            min-height: 380px;
-            max-height: 480px;
-            background: #000;
+            height: 280px;
+            border-radius: 20px;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #000;
         }
 
-        .banner-screenshot {
+        .bento-hero-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -529,136 +521,127 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .project-showcase-card:hover .banner-screenshot {
-            transform: scale(1.03);
+        .bento-hero:hover .bento-hero-img {
+            transform: scale(1.04);
         }
 
-        .banner-overlay {
+        .bento-badge-top {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.2) 0%, rgba(3, 7, 18, 0.9) 100%);
-            pointer-events: none;
-        }
-
-        .banner-badge-wrap {
-            position: absolute;
-            top: 20px; left: 24px;
-            z-index: 10;
-        }
-
-        .featured-badge {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 1);
+            top: 16px; left: 18px;
+            background: rgba(255, 255, 255, 0.95);
             color: #030712;
             padding: 6px 16px;
             border-radius: 30px;
             font-size: 0.78rem;
             font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        .banner-preview-hint {
-            position: absolute;
-            right: 24px; bottom: 20px;
-            z-index: 10;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.75rem;
-            font-family: 'JetBrains Mono', monospace;
-            color: rgba(255,255,255,0.8);
-            background: rgba(10, 15, 26, 0.8);
+            gap: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        /* Interactive Tab Switcher inside Bento Hero */
+        .bento-tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            width: fit-content;
+        }
+
+        .bento-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
             padding: 6px 14px;
-            border-radius: 20px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .banner-icon-bg {
-            position: absolute;
-            right: 40px; bottom: 20px;
-            font-size: 10rem;
-            color: rgba(255, 255, 255, 0.03);
-            pointer-events: none;
-        }
-
-        .project-body {
-            padding: 40px;
-        }
-
-        .project-title-large {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 16px;
+        .bento-tab-btn.active {
+            background: rgba(255, 255, 255, 0.15);
             color: #fff;
+            font-weight: 700;
+        }
+
+        .bento-tab-content {
+            display: none;
+        }
+
+        .bento-tab-content.active {
+            display: block;
+        }
+
+        .bento-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 12px;
             letter-spacing: -0.5px;
         }
 
-        .project-description-text {
-            font-size: 1.05rem;
+        .bento-desc {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            margin-bottom: 32px;
-            line-height: 1.7;
+            line-height: 1.65;
             font-weight: 300;
+            margin-bottom: 24px;
         }
 
-        /* Features List Grid */
-        .features-grid {
+        /* Feature Checklist Tags */
+        .bento-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-bottom: 35px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
         }
 
-        .feature-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 14px 18px;
-            border-radius: 16px;
+        .bento-feat-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 0.88rem;
+            gap: 8px;
+            font-size: 0.82rem;
             color: #e2e8f0;
             font-weight: 500;
         }
+        .bento-feat-item i { color: var(--emerald); }
 
-        .feature-item i {
-            color: var(--emerald);
-            font-size: 1.1rem;
-        }
-
-        /* Tech Pills */
         .tech-pill-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 35px;
+            gap: 8px;
+            margin-bottom: 28px;
         }
 
         .tech-pill {
             background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             color: #f1f5f9;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            padding: 6px 14px;
-            border-radius: 10px;
+            font-size: 0.75rem;
+            padding: 5px 12px;
+            border-radius: 8px;
             font-weight: 600;
         }
 
-        .action-button-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
+        /* Side Bento Cards */
+        .bento-icon-bg {
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.15);
+            margin-bottom: 20px;
         }
 
-        /* Tech Stack & Skills Section */
+        /* Tech Stack Bento Grid */
         .tech-stack-section {
             margin-bottom: 120px;
         }
@@ -777,6 +760,85 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
+        /* ⌘K Command Palette Modal */
+        .cmd-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(16px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .cmd-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cmd-modal-box {
+            width: 100%; max-width: 580px;
+            background: rgba(10, 15, 26, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+            transform: scale(0.95);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cmd-modal-overlay.active .cmd-modal-box {
+            transform: scale(1);
+        }
+
+        .cmd-modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cmd-modal-header input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            width: 100%;
+            outline: none;
+        }
+
+        .cmd-modal-list {
+            padding: 12px;
+            max-height: 340px;
+            overflow-y: auto;
+            list-style: none;
+        }
+
+        .cmd-modal-item a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-radius: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.2s ease;
+        }
+
+        .cmd-modal-item a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
         /* Scroll Reveal Transitions */
         .reveal-on-scroll {
             opacity: 0;
@@ -806,9 +868,10 @@
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 3rem; letter-spacing: -1.5px; }
-            .section-title { font-size: 2.2rem; }
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; gap: 32px; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-hero { grid-column: span 1; }
         }
 
         @media (max-width: 640px) {
@@ -821,8 +884,8 @@
             .nav-items { display: none; }
             .container { padding: 0 16px; }
 
-            .hero { padding-top: 60px; padding-bottom: 50px; }
-            .hero h1 { font-size: 2.2rem; letter-spacing: -1px; }
+            .hero { padding-top: 60px; padding-bottom: 40px; }
+            .hero h1 { font-size: 2.3rem; letter-spacing: -1px; }
             .hero-subtitle { font-size: 0.95rem; margin-bottom: 28px; }
             .btn-white-premium, .btn-glass-secondary {
                 padding: 14px 24px;
@@ -839,13 +902,10 @@
             }
             .metric-number { font-size: 1.7rem; }
 
-            .project-body { padding: 24px 20px; }
-            .project-title-large { font-size: 1.4rem; }
-            .project-description-text { font-size: 0.92rem; }
-            .features-grid { grid-template-columns: 1fr; }
-
-            .action-button-group { flex-direction: column; gap: 10px; }
-            .action-button-group a { width: 100%; text-align: center; }
+            .bento-card { padding: 24px; border-radius: 24px; }
+            .bento-hero-media { height: 200px; }
+            .bento-title { font-size: 1.4rem; }
+            .bento-features { grid-template-columns: 1fr; }
 
             .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .contact-card-box { padding: 36px 20px; }
@@ -854,7 +914,7 @@
 </head>
 <body>
 
-    <!-- Background Components -->
+    <!-- Background Grid & Mesh -->
     <div class="bg-grid"></div>
     <div class="glow-mesh mesh-1"></div>
     <div class="glow-mesh mesh-2"></div>
@@ -867,41 +927,50 @@
         </div>
         <ul class="nav-items">
             <li><a href="#about">Tentang</a></li>
-            <li><a href="#projects">Karya Utama</a></li>
+            <li><a href="#projects">Bento Showcase</a></li>
             <li><a href="#skills">Keahlian</a></li>
             <li><a href="#contact">Kontak</a></li>
         </ul>
-        <div class="hire-badge">
-            <div class="pulse-dot"></div>
-            <span>Open for Opportunities</span>
+        <div class="nav-right-group">
+            <button class="cmd-btn" id="openCmdModal">
+                <i class="fa-solid fa-terminal"></i>
+                <span>Search</span>
+                <kbd>⌘K</kbd>
+            </button>
+            <div class="hire-badge">
+                <div class="pulse-dot"></div>
+                <span>Open for Opportunities</span>
+            </div>
         </div>
     </nav>
 
     <div class="container">
 
-        <!-- Hero Section -->
+        <!-- Hero Section (Linear Split) -->
         <section class="hero" id="about">
-            <div class="hero-pill">
-                <i class="fa-solid fa-code text-white"></i>
-                <span class="typewriter-role" id="tw-role"></span><span class="tw-cursor"></span>
+            <div class="hero-left">
+                <div class="hero-pill">
+                    <i class="fa-solid fa-shield-halved text-white"></i>
+                    <span class="typewriter-role" id="tw-role"></span><span class="tw-cursor"></span>
+                </div>
+
+                <h1>Arip Khasanul Muna<br><span class="gradient-text">Fullstack Engineer & System Architect</span></h1>
+                <p class="hero-subtitle">
+                    Spesialis pengembang aplikasi web enterprise, arsitektur teruji, dan antarmuka modern. Berpengalaman membangun platform komersial berskala penuh dengan Laravel 13, PHP 8.3, PHPUnit automated testing, dan integrasi payment gateway.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-white-premium">
+                        <i class="fa-solid fa-grip text-slate-950"></i>
+                        <span>Jelajahi Bento Showcase</span>
+                    </a>
+                    <a href="https://wa.me/6289637885476?text=Halo%20Arip,%20saya%20tertarik%20melihat%20portofolio%20Bento%20Anda" target="_blank" class="btn-glass-secondary">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                        <span>Hubungi WhatsApp</span>
+                    </a>
+                </div>
             </div>
 
-            <h1>Arip Khasanul Muna<br><span class="gradient-text">Fullstack Software Engineer</span></h1>
-            <p class="hero-subtitle">
-                Spesialis pengembang sistem web berkinerja tinggi, arsitektur teruji, dan antarmuka modern. Menguasai Laravel 13, React, integrasi Payment Gateway, dan otomatisasi PHPUnit.
-            </p>
-            <div class="hero-actions">
-                <a href="#projects" class="btn-white-premium">
-                    <i class="fa-solid fa-layer-group"></i>
-                    <span>Lihat Karya Utama</span>
-                </a>
-                <a href="https://wa.me/6289637885476?text=Halo%20Arip,%20saya%20tertarik%20melihat%20portofolio%20Anda" target="_blank" class="btn-glass-secondary">
-                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
-                    <span>Hubungi WhatsApp</span>
-                </a>
-            </div>
-
-            <!-- Floating Terminal Widget -->
+            <!-- Hero Right Terminal Widget -->
             <div class="hero-terminal">
                 <div class="terminal-titlebar">
                     <span class="t-dot t-red"></span>
@@ -933,7 +1002,7 @@
             </div>
             <div class="metric-item">
                 <div class="metric-number" data-target="4" data-suffix=" Role">0 Role</div>
-                <div class="metric-label">Multi-Role Architecture</div>
+                <div class="metric-label">Multi-Role System</div>
             </div>
             <div class="metric-item">
                 <div class="metric-number" data-target="100" data-suffix="%">0%</div>
@@ -941,149 +1010,166 @@
             </div>
         </div>
 
-        <!-- Featured Projects Showcase Section -->
+        <!-- Asymmetric Bento Grid Showcase Section -->
         <section class="showcase-container" id="projects">
-            <div class="section-header-row">
-                <div class="section-header-text">
-                    <span class="section-tag">// FEATURED PRODUCTION APPS</span>
-                    <h2 class="section-title">Karya Unggulan</h2>
-                    <p style="color: var(--text-muted); font-weight: 300;">Sistem web enterprise berkinerja tinggi yang telah dirancang & diuji secara komprehensif</p>
-                </div>
-                <div class="slider-nav-controls">
-                    <button class="slider-arrow" id="prevProjectBtn" title="Project Sebelumnya">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </button>
-                    <div class="slider-counter">
-                        <span id="currentProjectIdx">1</span> / <span id="totalProjectIdx">2</span>
-                    </div>
-                    <button class="slider-arrow" id="nextProjectBtn" title="Project Selanjutnya">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
+            <div class="section-header">
+                <span class="section-tag">// ASYMMETRIC BENTO SHOWCASE</span>
+                <h2 class="section-title">Karya & Arsitektur Utama</h2>
+                <p style="color: var(--text-muted); font-weight: 300; max-width: 600px;">Platform dan sistem perangkat lunak yang dirancang secara presisi dengan pengujian otomatis.</p>
             </div>
 
-            <!-- Slider Wrapper & Track -->
-            <div class="projects-slider-wrapper">
-                <div class="projects-slider-track" id="projectsTrack">
+            <!-- Bento Grid Layout -->
+            <div class="bento-grid">
 
-                    <!-- Project Card 1: TiketFest Platform -->
-                    <div class="project-showcase-card">
-                        <div class="project-banner-box">
-                            <img src="assets/Screenshot 2026-08-05 153515.png" alt="TiketFest App Banner Preview" class="banner-screenshot">
-                            <div class="banner-overlay"></div>
-                            <div class="banner-badge-wrap">
-                                <span class="featured-badge">
-                                    <i class="fa-solid fa-crown text-amber-400"></i>
-                                    <span>Enterprise E-Ticketing SaaS</span>
-                                </span>
-                            </div>
-                            <div class="banner-preview-hint">
-                                <i class="fa-solid fa-expand"></i> Live Platform Preview
+                <!-- Giant Hero Bento Card (Span 2 Cols) -->
+                <div class="bento-card bento-hero">
+                    <div>
+                        <div class="bento-hero-media">
+                            <img src="assets/Screenshot 2026-08-05 153515.png" alt="TiketFest Enterprise E-Ticketing SaaS" class="bento-hero-img">
+                            <div class="bento-badge-top">
+                                <i class="fa-solid fa-crown text-amber-400"></i>
+                                <span>Enterprise SaaS Flagship</span>
                             </div>
                         </div>
 
-                        <div class="project-body">
-                            <h3 class="project-title-large">TiketFest — Enterprise E-Ticketing SaaS Platform</h3>
-                            <p class="project-description-text">
-                                Platform manajemen event & pemesanan tiket online komersial berbasis Laravel 13 & PHP 8.3 dengan desain TF Elegant White Dark Tech. Dibuat dengan arsitektur multi-role (Admin, EO, Scanner Gate, Buyer) yang mencakup publikasi event, profil publik EO, simulasi Multi-Method Payment Gateway, penerbitan E-Ticket PDF otomatis, QR Scanner real-time, audit finansial, refund massal 1-klik, dan proteksi verifikasi KTP.
+                        <!-- Tab Switcher inside Hero Bento -->
+                        <div class="bento-tab-nav">
+                            <button class="bento-tab-btn active" onclick="switchBentoTab(this, 'tab-overview')">Fitur Ringkasan</button>
+                            <button class="bento-tab-btn" onclick="switchBentoTab(this, 'tab-security')">Keamanan & Verification</button>
+                            <button class="bento-tab-btn" onclick="switchBentoTab(this, 'tab-phpunit')">Automated Testing</button>
+                        </div>
+
+                        <!-- Tab Content 1: Overview -->
+                        <div id="tab-overview" class="bento-tab-content active">
+                            <h3 class="bento-title">TiketFest — Enterprise E-Ticketing SaaS Platform</h3>
+                            <p class="bento-desc">
+                                Platform manajemen event & pemesanan tiket online komersial berbasis Laravel 13 & PHP 8.3 dengan gaya TF Elegant White. Dilengkapi arsitektur multi-role (Admin, EO, Scanner Gate, Buyer), profil EO publik ala medsos (`/organizers/{user}`), penerbitan E-Ticket PDF otomatis, QR Scanner real-time, audit finansial, refund massal 1-klik, dan verifikasi identitas KTP.
                             </p>
 
-                            <!-- Features List -->
-                            <div class="features-grid">
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> Arsitektur Multi-Role (Admin, EO, Scanner Gate, Buyer)
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> Profil EO Publik (/organizers/{user})
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> Audit Finansial & Refund Massal 1-Klik
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> Verifikasi Identitas KTP & Proteksi Fraud
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> Pemindai Kamera QR Code Real-Time
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> 68/68 Automated PHPUnit Tests Passed
-                                </div>
+                            <div class="bento-features">
+                                <div class="bento-feat-item"><i class="fa-solid fa-circle-check"></i> Arsitektur Multi-Role (Admin, EO, Scanner, Buyer)</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-circle-check"></i> Profil EO Publik (/organizers/{user})</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-circle-check"></i> Audit Finansial & Refund Massal 1-Klik</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-circle-check"></i> Pemindai Kamera QR Code Real-Time</div>
                             </div>
+                        </div>
 
-                            <!-- Tech Stack Tags -->
-                            <div class="tech-pill-container">
-                                <span class="tech-pill">Laravel 13</span>
-                                <span class="tech-pill">PHP 8.3</span>
-                                <span class="tech-pill">SQLite / MySQL</span>
-                                <span class="tech-pill">PHPUnit (68 Tests)</span>
-                                <span class="tech-pill">QR Scanner</span>
-                                <span class="tech-pill">PDF Engine</span>
-                                <span class="tech-pill">Payment Gateway</span>
-                                <span class="tech-pill">Tailwind CSS</span>
-                            </div>
+                        <!-- Tab Content 2: Security -->
+                        <div id="tab-security" class="bento-tab-content">
+                            <h3 class="bento-title">Keamanan Identitas & Gatekeeper QR</h3>
+                            <p class="bento-desc">
+                                Perlindungan transaksi anti-penipuan dengan validasi KTP wajib sebelum transaksi, hash unik E-Ticket, dan akun khusus Staff Scanner di pintu masuk gatekeeper tanpa akses finansial.
+                            </p>
 
-                            <!-- Action Buttons -->
-                            <div class="action-button-group">
-                                <a href="https://github.com/arifkhmn/event-ticket-app" target="_blank" class="btn-white-premium" style="padding: 14px 28px; font-size: 0.9rem;">
-                                    <i class="fa-brands fa-github text-slate-950"></i>
-                                    <span>Lihat Source Code</span>
-                                </a>
-                                <a href="https://wa.me/6289637885476?text=Halo%20Arip,%20saya%20tertarik%20melihat%20live%20demo%20TiketFest%20Enterprise%20E-Ticketing%20Platform." target="_blank" class="btn-glass-secondary" style="padding: 14px 28px; font-size: 0.9rem;">
-                                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
-                                    <span>Minta Live Demo</span>
-                                </a>
+                            <div class="bento-features">
+                                <div class="bento-feat-item"><i class="fa-solid fa-shield-check"></i> Verifikasi KTP / Identitas Pembeli</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-qrcode"></i> Hash Enkripsi QR Tiket Anti-Duplikasi</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-user-lock"></i> Gatekeeper Role ACL Enforcement</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-receipt"></i> Multi-Payment Simulation (QRIS, VA, E-Wallet)</div>
                             </div>
+                        </div>
+
+                        <!-- Tab Content 3: PHPUnit -->
+                        <div id="tab-phpunit" class="bento-tab-content">
+                            <h3 class="bento-title">68/68 Automated PHPUnit Test Suite</h3>
+                            <p class="bento-desc">
+                                Dirancang dengan filosofi *Zero-Regression*. Seluruh alur mulai dari auth, pendaftaran event, pembuatan tiket, simulasi checkout, hingga scanner gate diuji dengan 134 assertions otomatis.
+                            </p>
+
+                            <div class="bento-features">
+                                <div class="bento-feat-item"><i class="fa-solid fa-vial"></i> 68 Automated Tests Executed in 1.23s</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-code-branch"></i> Feature & Unit Test Coverage</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-database"></i> SQLite In-Memory Test Database</div>
+                                <div class="bento-feat-item"><i class="fa-solid fa-check-double"></i> 134 Validation Assertions</div>
+                            </div>
+                        </div>
+
+                        <div class="tech-pill-container">
+                            <span class="tech-pill">Laravel 13</span>
+                            <span class="tech-pill">PHP 8.3</span>
+                            <span class="tech-pill">SQLite / MySQL</span>
+                            <span class="tech-pill">PHPUnit (68 Tests)</span>
+                            <span class="tech-pill">QR Scanner</span>
+                            <span class="tech-pill">PDF Engine</span>
+                            <span class="tech-pill">Tailwind CSS</span>
                         </div>
                     </div>
 
-                    <!-- Project Card 2: Real Racing Simulator -->
-                    <div class="project-showcase-card">
-                        <div class="project-banner-box" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
-                            <span class="featured-badge">
-                                <i class="fa-solid fa-gamepad"></i>
-                                <span>Physics Engine App</span>
-                            </span>
-                            <i class="fa-solid fa-car-side banner-icon-bg"></i>
-                        </div>
-
-                        <div class="project-body">
-                            <h3 class="project-title-large">Real Racing Simulator & Physics Engine</h3>
-                            <p class="project-description-text">
-                                Simulasi gim balap mobil berbasis Python yang menerapkan perhitungan fisika kendaraan real-time, dashboard telemetri, kontrol kemudi dinamis, dan kalkulasi waktu lap secara presisi.
-                            </p>
-
-                            <div class="features-grid">
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> Real-time Physics Engine
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> Telemetry & Speed Dashboard
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> Custom Track & Collision Logic
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fa-solid fa-circle-check"></i> High FPS Rendering Engine
-                                </div>
-                            </div>
-
-                            <div class="tech-pill-container">
-                                <span class="tech-pill">Python 3.11</span>
-                                <span class="tech-pill">Pygame</span>
-                                <span class="tech-pill">Physics Math</span>
-                                <span class="tech-pill">OOP Architecture</span>
-                            </div>
-
-                            <div class="action-button-group">
-                                <a href="#contact" class="btn-glass-secondary" style="padding: 14px 28px; font-size: 0.9rem;">
-                                    <i class="fa-solid fa-code text-white"></i>
-                                    <span>Lihat Detail Project</span>
-                                </a>
-                            </div>
-                        </div>
+                    <div class="action-button-group">
+                        <a href="https://github.com/arifkhmn/event-ticket-app" target="_blank" class="btn-white-premium" style="padding: 12px 24px; font-size: 0.88rem;">
+                            <i class="fa-brands fa-github text-slate-950"></i>
+                            <span>Lihat Source Code</span>
+                        </a>
+                        <a href="https://wa.me/6289637885476?text=Halo%20Arip,%20saya%20tertarik%20melihat%20live%20demo%20TiketFest%20Platform." target="_blank" class="btn-glass-secondary" style="padding: 12px 24px; font-size: 0.88rem;">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Minta Live Demo</span>
+                        </a>
                     </div>
-
                 </div>
+
+                <!-- Bento Card 2: Real Racing Simulator -->
+                <div class="bento-card">
+                    <div>
+                        <div class="bento-icon-bg">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <span class="featured-badge" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #fff; margin-bottom: 16px;">
+                            <i class="fa-solid fa-gamepad text-amber-400"></i> Physics Engine
+                        </span>
+                        <h3 class="bento-title" style="font-size: 1.4rem; margin-top: 12px;">Real Racing Simulator</h3>
+                        <p class="bento-desc" style="font-size: 0.88rem;">
+                            Simulasi gim balap mobil berbasis Python yang menerapkan perhitungan fisika kendaraan real-time, telemetri kecepatan, kontrol kemudi dinamis, dan kalkulasi waktu lap presisi.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="tech-pill-container" style="margin-bottom: 18px;">
+                            <span class="tech-pill">Python 3.11</span>
+                            <span class="tech-pill">Pygame</span>
+                            <span class="tech-pill">Physics Math</span>
+                        </div>
+                        <a href="#contact" class="btn-glass-secondary" style="width: 100%; padding: 10px 18px; font-size: 0.82rem;">
+                            <i class="fa-solid fa-code text-white"></i> Detail Specs
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bento Card 3: PHPUnit Architecture -->
+                <div class="bento-card">
+                    <div>
+                        <div class="bento-icon-bg">
+                            <i class="fa-solid fa-vial-circle-check"></i>
+                        </div>
+                        <h3 class="bento-title" style="font-size: 1.4rem;">Automated Testing Mastery</h3>
+                        <p class="bento-desc" style="font-size: 0.88rem;">
+                            Penerapan pengujian otomatis (Automated Unit & Feature Testing) pada setiap route, middleware, dan service layer untuk menjamin stabilitas sistem tanpa bug saat rilis rilis.
+                        </p>
+                    </div>
+                    <div class="tech-pill-container" style="margin-bottom: 0;">
+                        <span class="tech-pill">PHPUnit</span>
+                        <span class="tech-pill">TDD Principles</span>
+                        <span class="tech-pill">Clean Architecture</span>
+                    </div>
+                </div>
+
+                <!-- Bento Card 4: Multi-Role ACL & Security -->
+                <div class="bento-card bento-hero">
+                    <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 260px;">
+                            <span class="section-tag">// SECURITY & COMPLIANCE</span>
+                            <h3 class="bento-title" style="font-size: 1.5rem;">Multi-Role Security & Fraud Protection</h3>
+                            <p class="bento-desc" style="font-size: 0.9rem; margin-bottom: 0;">
+                                Arsitektur hak akses (ACL) terpisah secara ketat antara Administrator, Organizer Event, Petugas Gate Scanner, dan Pembeli Tiket untuk mencegah kebocoran data & transaksi palsu.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <span class="tech-pill">Identity Verification</span>
+                            <span class="tech-pill">Role Middleware</span>
+                            <span class="tech-pill">Encrypted QR Ticket</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -1141,7 +1227,7 @@
             <div class="contact-cards-grid">
                 
                 <!-- WhatsApp -->
-                <a href="https://wa.me/6289637885476?text=Halo%20Arip,%20saya%20tertarik%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi" target="_blank" class="contact-action-card">
+                <a href="https://wa.me/6289637885476?text=Halo%20Arip,%20saya%20tertarik%20melihat%20portofolio%20Bento%20Anda%20dan%20ingin%20berdiskusi" target="_blank" class="contact-action-card">
                     <div class="card-icon-wrapper icon-wa-box">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
@@ -1181,16 +1267,106 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© {{ date('Y') }} Arip Khasanul Muna. Built with TF Elegant White Dark Tech Design System.</p>
+            <p>© {{ date('Y') }} Arip Khasanul Muna. Linear Bento Architecture System.</p>
         </div>
     </footer>
 
+    <!-- ⌘K Command Palette Modal -->
+    <div class="cmd-modal-overlay" id="cmdModal">
+        <div class="cmd-modal-box">
+            <div class="cmd-modal-header">
+                <i class="fa-solid fa-terminal text-white"></i>
+                <input type="text" id="cmdSearchInput" placeholder="Ketik perintah atau cari (contoh: GitHub, WhatsApp, TiketFest)...">
+                <span class="text-xs font-mono text-slate-500">ESC</span>
+            </div>
+            <ul class="cmd-modal-list">
+                <li class="cmd-modal-item">
+                    <a href="https://github.com/arifkhmn/event-ticket-app" target="_blank">
+                        <span><i class="fa-brands fa-github mr-2"></i> GitHub — TiketFest Source Code</span>
+                        <span>&rarr;</span>
+                    </a>
+                </li>
+                <li class="cmd-modal-item">
+                    <a href="https://wa.me/6289637885476" target="_blank">
+                        <span><i class="fa-brands fa-whatsapp mr-2 text-emerald-400"></i> WhatsApp — Hubungi Direct</span>
+                        <span>&rarr;</span>
+                    </a>
+                </li>
+                <li class="cmd-modal-item">
+                    <a href="mailto:aripkhasanulmuna@gmail.com">
+                        <span><i class="fa-solid fa-envelope mr-2"></i> Email — Send Inquiry</span>
+                        <span>&rarr;</span>
+                    </a>
+                </li>
+                <li class="cmd-modal-item">
+                    <a href="#projects" onclick="closeCmdModal()">
+                        <span><i class="fa-solid fa-grip mr-2"></i> Bento Showcase — Works</span>
+                        <span>&rarr;</span>
+                    </a>
+                </li>
+                <li class="cmd-modal-item">
+                    <a href="#skills" onclick="closeCmdModal()">
+                        <span><i class="fa-solid fa-code mr-2"></i> Tech Stack & Skills</span>
+                        <span>&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <!-- Interactive Scripts -->
     <script>
+        // Bento Tab Switcher
+        function switchBentoTab(btn, tabId) {
+            const container = btn.closest('.bento-card');
+            container.querySelectorAll('.bento-tab-btn').forEach(b => b.classList.remove('active'));
+            container.querySelectorAll('.bento-tab-content').forEach(c => c.classList.remove('active'));
+
+            btn.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // ⌘K Modal Logic
+        const cmdModal = document.getElementById('cmdModal');
+        const openCmdBtn = document.getElementById('openCmdModal');
+        const cmdInput = document.getElementById('cmdSearchInput');
+
+        function openCmdModal() {
+            cmdModal.classList.add('active');
+            setTimeout(() => cmdInput.focus(), 100);
+        }
+
+        function closeCmdModal() {
+            cmdModal.classList.remove('active');
+        }
+
+        openCmdBtn?.addEventListener('click', openCmdModal);
+
+        window.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                cmdModal.classList.contains('active') ? closeCmdModal() : openCmdModal();
+            }
+            if (e.key === 'Escape') closeCmdModal();
+        });
+
+        cmdModal?.addEventListener('click', (e) => {
+            if (e.target === cmdModal) closeCmdModal();
+        });
+
+        // Search Filter inside ⌘K Modal
+        cmdInput?.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            document.querySelectorAll('.cmd-modal-item').forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
 
             // Typewriter Effect
-            const roles = ["FULLSTACK SOFTWARE ENGINEER", "LARAVEL 13 EXPERT", "WEB PERFORMANCE SPECIALIST"];
+            const roles = ["FULLSTACK ENGINEER", "LARAVEL 13 ARCHITECT", "SYSTEM PERFORMANCE SPECIALIST"];
             let roleIdx = 0;
             const roleEl = document.getElementById('tw-role');
 
@@ -1261,52 +1437,6 @@
                 }, { passive: true });
             }
 
-            // Carousel Slider Controls
-            const track = document.getElementById('projectsTrack');
-            const prevBtn = document.getElementById('prevProjectBtn');
-            const nextBtn = document.getElementById('nextProjectBtn');
-            const currentIdxEl = document.getElementById('currentProjectIdx');
-            const totalIdxEl = document.getElementById('totalProjectIdx');
-
-            if (track && prevBtn && nextBtn) {
-                const cards = track.querySelectorAll('.project-showcase-card');
-                const total = cards.length;
-                let currentIndex = 0;
-
-                if (totalIdxEl) totalIdxEl.textContent = total;
-
-                function updateSlider() {
-                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                    if (currentIdxEl) currentIdxEl.textContent = currentIndex + 1;
-                }
-
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % total;
-                    updateSlider();
-                });
-
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + total) % total;
-                    updateSlider();
-                });
-
-                let startX = 0;
-                track.addEventListener('touchstart', e => {
-                    startX = e.touches[0].clientX;
-                }, { passive: true });
-
-                track.addEventListener('touchend', e => {
-                    let endX = e.changedTouches[0].clientX;
-                    if (startX - endX > 50) {
-                        currentIndex = (currentIndex + 1) % total;
-                        updateSlider();
-                    } else if (endX - startX > 50) {
-                        currentIndex = (currentIndex - 1 + total) % total;
-                        updateSlider();
-                    }
-                }, { passive: true });
-            }
-
             // Scroll Reveal Observer
             const revealObserver = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
@@ -1317,7 +1447,7 @@
                 });
             }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-            document.querySelectorAll('.metric-item, .showcase-container, .tech-stack-section, .contact-card-box, .hero, .skill-card, .project-showcase-card').forEach((el, i) => {
+            document.querySelectorAll('.metric-item, .bento-card, .tech-stack-section, .contact-card-box, .hero, .skill-card').forEach((el, i) => {
                 el.classList.add('reveal-on-scroll');
                 el.classList.add(`delay-${(i % 4) + 1}`);
                 revealObserver.observe(el);
