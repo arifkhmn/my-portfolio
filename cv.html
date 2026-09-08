@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Arip Khasanul Muna</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm 14mm 12mm 14mm;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1a202c;
+            background-color: #f8fafc;
+            line-height: 1.42;
+            font-size: 9.5pt;
+        }
+
+        /* Top Action Bar for browser view */
+        .no-print-bar {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .print-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            font-weight: 700;
+            font-size: 13px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover {
+            background: #059669;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 14mm 16mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 2px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1.5px solid #0f172a;
+        }
+
+        .name {
+            font-size: 20pt;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #0f172a;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .role-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #0d9488;
+            letter-spacing: 0.2px;
+            margin-bottom: 6px;
+        }
+
+        .contact-info {
+            font-size: 8.8pt;
+            color: #475569;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .contact-info a {
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: #0d9488;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 11px;
+        }
+
+        .section-title {
+            font-size: 10pt;
+            font-weight: 800;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 2px;
+            margin-bottom: 6px;
+        }
+
+        /* Summary */
+        .summary-text {
+            color: #334155;
+            font-size: 9.2pt;
+            text-align: justify;
+            line-height: 1.45;
+        }
+
+        /* Skills */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9.2pt;
+        }
+
+        .skills-table td {
+            padding: 2px 0;
+            vertical-align: top;
+        }
+
+        .skills-label {
+            width: 155px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .skills-content {
+            color: #334155;
+        }
+
+        /* Projects & Experience */
+        .entry {
+            margin-bottom: 8px;
+        }
+
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .entry-title {
+            font-size: 9.6pt;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .entry-title a {
+            color: #0f172a;
+            text-decoration: none;
+        }
+
+        .entry-title a:hover {
+            text-decoration: underline;
+            color: #0d9488;
+        }
+
+        .entry-tech {
+            font-weight: 500;
+            font-size: 8.5pt;
+            color: #0d9488;
+            font-style: italic;
+        }
+
+        .entry-date {
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: #64748b;
+            white-space: nowrap;
+        }
+
+        .entry-sub {
+            font-size: 8.8pt;
+            color: #475569;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .entry-bullets {
+            list-style-type: disc;
+            padding-left: 17px;
+            margin-top: 2px;
+        }
+
+        .entry-bullets li {
+            color: #334155;
+            font-size: 8.9pt;
+            margin-bottom: 2px;
+            line-height: 1.38;
+        }
+
+        .entry-bullets li strong {
+            color: #0f172a;
+        }
+
+        /* Print Media Styles */
+        @media print {
+            body {
+                background: white;
+                font-size: 9pt;
+            }
+
+            .no-print-bar {
+                display: none !important;
+            }
+
+            .page {
+                width: 100%;
+                min-height: auto;
+                padding: 0;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .entry-bullets li {
+                font-size: 8.7pt;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-bar">
+        <div>
+            <strong>CV Arip Khasanul Muna</strong> — Format ATS-Friendly (A4)
+        </div>
+        <button class="print-btn" onclick="window.print()">
+            🖨️ Cetak / Simpan PDF (Ctrl + P)
+        </button>
+    </div>
+
+    <div class="page">
+        <!-- HEADER -->
+        <header class="header">
+            <h1 class="name">Arip Khasanul Muna</h1>
+            <div class="role-title">Fullstack &amp; Mobile Developer</div>
+            <div class="contact-info">
+                <span>📍 Tangerang Selatan, Indonesia</span>
+                <span>•</span>
+                <span>📞 <a href="tel:+6289637885476">+62 896-3788-5476</a></span>
+                <span>•</span>
+                <span>✉️ <a href="mailto:aripkhasanulmuna@gmail.com">aripkhasanulmuna@gmail.com</a></span>
+                <span>•</span>
+                <span>💻 <a href="https://github.com/arifkhmn" target="_blank">github.com/arifkhmn</a></span>
+                <span>•</span>
+                <span>🌐 <a href="https://arifkhmn.github.io/my-portfolio" target="_blank">arifkhmn.github.io/my-portfolio</a></span>
+            </div>
+        </header>
+
+        <!-- SUMMARY -->
+        <section class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary-text">
+                Results-driven Fullstack &amp; Mobile Developer with a Bachelor of Computer Science from Universitas Pamulang. Experienced in architecting and delivering production-ready applications utilizing <strong>Flutter, Laravel 13, React 18, and Node.js</strong>. Proven track record building end-to-end multi-role systems, including a real-time QR school management ecosystem, a commercial SaaS e-ticketing platform tested with 68 automated unit/feature tests, and real-time hardware telemetry simulators. Passionate about clean architecture, high-efficiency APIs, and automated software testing.
+            </p>
+        </section>
+
+        <!-- TECHNICAL SKILLS -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <table class="skills-table">
+                <tr>
+                    <td class="skills-label">Languages:</td>
+                    <td class="skills-content">Dart, PHP, JavaScript (ES6+), TypeScript, SQL, HTML5, CSS3</td>
+                </tr>
+                <tr>
+                    <td class="skills-label">Frameworks &amp; Runtimes:</td>
+                    <td class="skills-content">Flutter 3, Laravel 13, React 18, Next.js 15, Node.js (Express.js), Riverpod</td>
+                </tr>
+                <tr>
+                    <td class="skills-label">Databases &amp; Backend:</td>
+                    <td class="skills-content">PostgreSQL, Supabase, MySQL, SQLite, RESTful API Design, JWT Auth, Multer</td>
+                </tr>
+                <tr>
+                    <td class="skills-label">Testing &amp; Developer Tools:</td>
+                    <td class="skills-content">PHPUnit (Automated Testing), Git, GitHub, Postman, Vite, Tailwind CSS, Vercel</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- FEATURED PROJECTS -->
+        <section class="section">
+            <h2 class="section-title">Featured Projects</h2>
+
+            <!-- Project 1: E-Sekolah -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">
+                        <a href="https://github.com/arifkhmn/aplikasi-sekolah" target="_blank">E-Sekolah — Integrated School Management Ecosystem</a>
+                        <span class="entry-tech">| Flutter, React 18, Express, PostgreSQL, Supabase</span>
+                    </div>
+                    <div class="entry-date">2026</div>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Engineered a cross-platform mobile and web ecosystem supporting multi-role access control for <strong>Students, Teachers, and IT Administrators</strong>.</li>
+                    <li>Implemented real-time camera QR attendance verification with weekly reset cycles, timezone calibrations, and camera scanner lifecycle optimization.</li>
+                    <li>Integrated in-app PDF document viewing (Syncfusion) and built end-to-end student leave request workflows with teacher approval audits.</li>
+                    <li>Developed an administrative portal (React 18, Vite, Tailwind) for user management, academic schedules, and aggregated attendance analytics.</li>
+                </ul>
+            </div>
+
+            <!-- Project 2: TiketFest -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">
+                        <a href="https://github.com/arifkhmn/event-ticket-app" target="_blank">TiketFest — Enterprise E-Ticketing SaaS Platform</a>
+                        <span class="entry-tech">| Laravel 13, PHP 8.3, PHPUnit, MySQL, Tailwind CSS</span>
+                    </div>
+                    <div class="entry-date">2026</div>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Architected an enterprise event management &amp; commercial ticketing system with multi-role ACL (Admin, Event Organizer, Gatekeeper Scanner, Buyer).</li>
+                    <li>Authored <strong>68 automated unit &amp; feature tests</strong> with 134 validation assertions executed in 1.18 seconds (100% test coverage pass rate).</li>
+                    <li>Built dynamic encrypted E-Ticket PDF generation, camera QR barcode entrance validation, 1-click mass refunds, and financial audit logging.</li>
+                </ul>
+            </div>
+
+            <!-- Project 3: GameSpec Benchmark -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">
+                        <a href="https://github.com/arifkhmn/gamespec-benchmark" target="_blank">GameSpec Benchmark — Hardware Telemetry &amp; Live FPS Simulator</a>
+                        <span class="entry-tech">| Flutter 3, Dart, FL Chart</span>
+                    </div>
+                    <div class="entry-date">2026</div>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Developed an Android hardware telemetry utility evaluating GPU/CPU architectures across 20+ mobile chipsets (Snapdragon, Dimensity, Helio, Exynos).</li>
+                    <li>Designed multi-preset FPS simulation algorithms (Low to Ultra) predicting real-time performance across 22 popular mobile games.</li>
+                    <li>Programmed live battery thermal discharge diagnostics and custom cyber-themed Canvas animated splash screens.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section">
+            <h2 class="section-title">Work &amp; Internship Experience</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Web Developer Intern</div>
+                    <div class="entry-date">2024</div>
+                </div>
+                <div class="entry-sub">Sobat Beres (SOBERES) • Tangerang Selatan, Indonesia</div>
+                <ul class="entry-bullets">
+                    <li>Developed internal operations web modules and dashboard interfaces for tracking customer service laundry/cleaning orders using PHP and MySQL.</li>
+                    <li>Standardized order tracking status flows between customer service administrators and field operational staff.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Universitas Pamulang (UNPAM)</div>
+                    <div class="entry-date">2021 – 2025</div>
+                </div>
+                <div class="entry-sub">Bachelor of Computer Science (S1 Teknik Informatika) • Tangerang Selatan, Indonesia</div>
+                <ul class="entry-bullets">
+                    <li><strong>Status:</strong> Thesis Defense Completed / Awaiting Graduation (Surat Keterangan Lulus / SKL Ready).</li>
+                    <li><strong>Undergraduate Thesis:</strong> Design and Implementation of Employee Attendance &amp; Payroll Management System.</li>
+                    <li><strong>Relevant Coursework:</strong> Object-Oriented Programming, Database Systems, Software Engineering, Web &amp; Mobile Development, Data Structures.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
