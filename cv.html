@@ -68,12 +68,37 @@
             box-shadow: 0 3px 16px rgba(0, 0, 0, 0.07);
         }
 
-        /* Header */
+                /* Header */
         .header {
-            text-align: center;
             margin-bottom: 7px;
-            padding-bottom: 6px;
+            padding-bottom: 7px;
             border-bottom: 1.5px solid #0f172a;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .photo-wrapper {
+            flex-shrink: 0;
+        }
+
+        .profile-photo {
+            width: 76px;
+            height: 101px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1.5px solid #0f172a;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            display: block;
+        }
+
+        .header-content {
+            flex: 1;
+            min-width: 0;
+            text-align: left;
         }
 
         .name {
@@ -91,16 +116,21 @@
             font-weight: 700;
             color: #0d9488;
             letter-spacing: 0.3px;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
 
         .contact-info {
-            font-size: 8.3pt;
+            font-size: 8.2pt;
             color: #475569;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 5px 10px;
+            align-items: center;
+        }
+
+        .contact-info .divider {
+            color: #94a3b8;
         }
 
         .contact-info a {
@@ -274,6 +304,15 @@
                 line-height: 1.28 !important;
                 margin-bottom: 1.2px !important;
             }
+
+            .profile-photo {
+                width: 72px !important;
+                height: 96px !important;
+                border: 1.5px solid #0f172a !important;
+                box-shadow: none !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
         }
     </style>
 </head>
@@ -291,18 +330,25 @@
     <div class="page">
         <!-- HEADER -->
         <header class="header">
-            <h1 class="name">Arip Khasanul Muna</h1>
-            <div class="role-title">Fullstack &amp; Mobile Developer</div>
-            <div class="contact-info">
-                <span>📍 Tangerang Selatan, Indonesia</span>
-                <span>•</span>
-                <span>📞 <a href="tel:+6289637885476">+62 896-3788-5476</a></span>
-                <span>•</span>
-                <span>✉️ <a href="mailto:aripkhasanulmuna@gmail.com">aripkhasanulmuna@gmail.com</a></span>
-                <span>•</span>
-                <span>💻 <a href="https://github.com/arifkhmn" target="_blank">github.com/arifkhmn</a></span>
-                <span>•</span>
-                <span>🌐 <a href="https://arifkhmn.github.io/my-portfolio" target="_blank">arifkhmn.github.io/my-portfolio</a></span>
+            <div class="header-container">
+                <div class="photo-wrapper">
+                    <img src="assets/arip-photo.png" alt="Arip Khasanul Muna" class="profile-photo" onerror="this.src='foto_arip.jpg'">
+                </div>
+                <div class="header-content">
+                    <h1 class="name">Arip Khasanul Muna</h1>
+                    <div class="role-title">Fullstack &amp; Mobile Developer</div>
+                    <div class="contact-info">
+                        <span>📍 Tangerang Selatan, Indonesia</span>
+                        <span class="divider">•</span>
+                        <span>📞 <a href="tel:+6289637885476">+62 896-3788-5476</a></span>
+                        <span class="divider">•</span>
+                        <span>✉️ <a href="mailto:aripkhasanulmuna@gmail.com">aripkhasanulmuna@gmail.com</a></span>
+                        <span class="divider">•</span>
+                        <span>💻 <a href="https://github.com/arifkhmn" target="_blank">github.com/arifkhmn</a></span>
+                        <span class="divider">•</span>
+                        <span>🌐 <a href="https://arifkhmn.github.io/my-portfolio" target="_blank">arifkhmn.github.io/my-portfolio</a></span>
+                    </div>
+                </div>
             </div>
         </header>
 
