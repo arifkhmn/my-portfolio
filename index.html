@@ -455,6 +455,13 @@
             gap: 8px;
         }
 
+        .project-title-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .project-title {
             font-size: 1.12rem;
             font-weight: 700;
@@ -471,6 +478,50 @@
             font-size: 0.75rem;
             color: var(--text-subtle);
             transition: transform 0.25s var(--ease-out), color 0.2s ease;
+        }
+
+        /* Development Status Badge */
+        .badge-dev {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            color: #b45309;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            padding: 2px 9px;
+            border-radius: 100px;
+            letter-spacing: 0.01em;
+            vertical-align: middle;
+            line-height: 1.4;
+        }
+
+        html.dark .badge-dev {
+            color: #fbbf24;
+            background: rgba(245, 158, 11, 0.16);
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        .badge-dev-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: #f59e0b;
+            box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+            animation: pulseDotAmber 2s infinite;
+        }
+
+        @keyframes pulseDotAmber {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 0 5px rgba(245, 158, 11, 0);
+            }
         }
 
         .project-item:hover .project-title {
@@ -866,6 +917,33 @@
             <h2 class="section-label">Proyek Pilihan</h2>
 
             <div class="projects-list">
+                <!-- PakaiTools -->
+                <article class="project-item reveal">
+                    <div class="project-head">
+                        <div class="project-title-group">
+                            <a href="https://pakai-tools.vercel.app/" target="_blank" class="project-title">
+                                PakaiTools <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <span class="badge-dev"><span class="badge-dev-dot"></span>Dalam Masa Pengembangan</span>
+                        </div>
+                        <span class="project-meta">Web Utilities · React · Client-Side Tools · 2026</span>
+                    </div>
+                    <p class="project-desc">
+                        Platform utilitas web serbaguna gratis berbasis 100% <em>client-side processing</em> tanpa pengunggahan berkas ke server untuk menjaga keamanan dan kerahasiaan data pengguna secara mutlak. Menghadirkan berbagai alat siap pakai seperti kompresi &amp; resize gambar (JPEG, PNG, WebP), manipulasi dokumen PDF (konversi gambar ke PDF, kompresi PDF lokal), generator QR Code instan multi-format, hingga pengolah teks interaktif dan penghitung kata secara instan di peramban.
+                    </p>
+                    <div class="project-img-wrapper">
+                        <img src="assets/pakai-tools.png" alt="PakaiTools Preview" class="project-img-thumb" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://pakai-tools.vercel.app/" target="_blank" class="action-link">
+                            <i class="fa-solid fa-globe"></i> Kunjungi Web Live
+                        </a>
+                        <a href="https://github.com/arifkhmn/PakaiTools" target="_blank" class="action-link">
+                            <i class="fa-brands fa-github"></i> Source Code di GitHub
+                        </a>
+                    </div>
+                </article>
+
                 <!-- Web Jualan UMKM -->
                 <article class="project-item reveal">
                     <div class="project-head">
